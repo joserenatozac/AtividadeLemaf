@@ -41,7 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\AgendamentoDto.cs" />
+    <Compile Include="Executor\RequisicaoBase.cs" />
+    <Compile Include="Executor\ResultadoBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Util\AtividadeLemafJoseRenato.Util.csproj">
+      <Project>{8AD544F8-F1F7-409A-A0F7-97DF91B45067}</Project>
+      <Name>AtividadeLemafJoseRenato.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
