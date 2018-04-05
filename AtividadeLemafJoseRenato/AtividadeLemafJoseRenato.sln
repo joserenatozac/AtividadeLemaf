@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtividadeLemafJoseRenato.Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtividadeLemafJoseRenato.Util", "AtividadeLemafJoseRenato.Util\AtividadeLemafJoseRenato.Util.csproj", "{8AD544F8-F1F7-409A-A0F7-97DF91B45067}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtividadeLemafJoseRenato.Entidades", "AtividadeLemafJoseRenato.Entidades\AtividadeLemafJoseRenato.Entidades.csproj", "{5B200676-FF28-4114-A3FC-673D36A94B7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{8AD544F8-F1F7-409A-A0F7-97DF91B45067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AD544F8-F1F7-409A-A0F7-97DF91B45067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AD544F8-F1F7-409A-A0F7-97DF91B45067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B200676-FF28-4114-A3FC-673D36A94B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B200676-FF28-4114-A3FC-673D36A94B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B200676-FF28-4114-A3FC-673D36A94B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B200676-FF28-4114-A3FC-673D36A94B7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
