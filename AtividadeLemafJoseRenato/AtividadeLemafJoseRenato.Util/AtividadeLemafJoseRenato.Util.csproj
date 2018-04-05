@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InformacaoException.cs" />
     <Compile Include="Log\LogContexto.cs" />
     <Compile Include="Log\TipoFluxoLog.cs" />
+    <Compile Include="Log\TipoLog.cs" />
+    <Compile Include="ParametrosEntradaAgendamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EstadoResultado.cs" />
   </ItemGroup>

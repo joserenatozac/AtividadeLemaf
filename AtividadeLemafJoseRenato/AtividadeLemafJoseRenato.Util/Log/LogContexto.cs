@@ -10,6 +10,7 @@ namespace AtividadeLemafJoseRenato.Util.Log
     {
         public string NomeFluxo { get; set; }
         public string NomeTransacao { get; set; }
+        public string TipoLog { get; set; }
 
         public LogContexto(string nomeFluxo, string nomeTransacao)
         {

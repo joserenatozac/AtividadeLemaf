@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AtividadeLemafJoseRenato.Util.Log
 {
-    public static class TipoFluxoLog
+    public class TipoLog
     {
-        public static string LerEntrada = "Lendo Entrada";
+        public static readonly string Informacao = "Informação";
+        public static readonly string Erro = "Erro";
     }
 }

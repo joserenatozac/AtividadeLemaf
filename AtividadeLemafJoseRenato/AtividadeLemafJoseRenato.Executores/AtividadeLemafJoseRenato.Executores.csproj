@@ -41,6 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reuniao\LerEntradaExecutor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Fronteiras\AtividadeLemafJoseRenato.Fronteiras.csproj">
+      <Project>{4C9B2F97-F73A-4D17-B2A2-9A9C991547D3}</Project>
+      <Name>AtividadeLemafJoseRenato.Fronteiras</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Util\AtividadeLemafJoseRenato.Util.csproj">
+      <Project>{8AD544F8-F1F7-409A-A0F7-97DF91B45067}</Project>
+      <Name>AtividadeLemafJoseRenato.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
