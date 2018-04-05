@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Net.Mail;
 
 namespace AtividadeLemafJoseRenato.Batch
 {
@@ -17,6 +18,7 @@ namespace AtividadeLemafJoseRenato.Batch
     {
         static void Main(string[] args)
         {
+            
             LerEntradaRequisicao requisicaoEntrada = new LerEntradaRequisicao(new LogContexto(TipoFluxoLog.LerEntrada, null));
             LerEntradaResultado resultadoEntrada = new LerEntradaExecutor().Executar(requisicaoEntrada);
 
