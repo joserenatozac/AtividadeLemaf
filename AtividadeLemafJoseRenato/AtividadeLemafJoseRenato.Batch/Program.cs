@@ -4,7 +4,6 @@ using AtividadeLemafJoseRenato.Util.Log;
 using System.Data;
 using System.Data.SqlClient;
 using System;
-using iAnywhere.Data.UltraLite;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
