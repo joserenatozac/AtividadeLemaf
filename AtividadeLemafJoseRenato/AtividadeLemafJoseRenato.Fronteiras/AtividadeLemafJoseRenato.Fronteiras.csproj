@@ -47,6 +47,8 @@
     <Compile Include="Executor\ResultadoBase.cs" />
     <Compile Include="Executor\Reuniao\LerEntradaRequisicao.cs" />
     <Compile Include="Executor\Reuniao\LerEntradaResultado.cs" />
+    <Compile Include="Executor\Reuniao\SelecionarSalaRequisicao.cs" />
+    <Compile Include="Executor\Reuniao\SelecionarSalaResultado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
