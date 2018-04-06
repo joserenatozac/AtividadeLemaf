@@ -13,5 +13,6 @@ namespace AtividadeLemafJoseRenato.Entidades
         public virtual bool TemAcessoInternet { get; set; }
         public virtual bool TemWebcamConferencia { get; set; }
         public virtual bool TemComputador { get; set; }
+        public List<HistoricoSalaEntidade> HistoricosDeReunioes { get; set; }
     }
 }

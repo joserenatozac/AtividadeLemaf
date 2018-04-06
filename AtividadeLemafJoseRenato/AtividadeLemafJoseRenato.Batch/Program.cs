@@ -21,18 +21,27 @@ namespace AtividadeLemafJoseRenato.Batch
 
             Console.WriteLine($"Número de entradas é {resultadoEntrada.ListaInformacoesAgendamentoReuniao.Count}");
 
-            var selecionarExecutor = new SelecionarSalaExecutor();
+            var selecionarExecutor = new SelecionarOuSugerirSalaExecutor();
 
             foreach(AgendamentoDto agendamentoDto in resultadoEntrada.ListaInformacoesAgendamentoReuniao)
             {
                 Console.WriteLine($"Avaliar entrada {agendamentoDto.EntradaBruta}:");
-                SelecionarSalaRequisicao requisicaoSolicitarSala = new SelecionarSalaRequisicao(new LogContexto(TipoFluxoLog.SelecionarSala, null))
+                SelecionarOuSugerirSalaRequisicao requisicaoSolicitarSala = new SelecionarOuSugerirSalaRequisicao(new LogContexto(TipoFluxoLog.SelecionarSala, null))
                 {
                     InformacoesAgendamentoSala = agendamentoDto
                 };
-                SelecionarSalaResultado resultadoSolicitarSala = selecionarExecutor.Executar(requisicaoSolicitarSala);
-                Console.WriteLine($"Sala agendada: Sala {resultadoSolicitarSala.IdSalaAgendada}");
+                SelecionarOuSugerirSalaResultado resultadoSolicitarSala = selecionarExecutor.Executar(requisicaoSolicitarSala);
+                if (resultadoSolicitarSala.IdSalaAgendada.HasValue)
+                    Console.WriteLine($"Sala agendada: Sala {resultadoSolicitarSala.IdSalaAgendada.Value}");
+                else
+                {
+                    Console.WriteLine("Não foi possível agendar uma sala. Sugestões:");
+                    resultadoSolicitarSala.ListaSugestoesAgendamentos.ForEach(sugestao =>
+                        Console.WriteLine($"Sala {sugestao.IdSalaSugerida}, DataInicio: {sugestao.DataInicioSugerida.ToString("dd-MM-yyyy HH:mm")}, DataFim {sugestao.DataFimSugerida.ToString("dd-MM-yyyy HH:mm")} "));
+                }
             }
+            Console.WriteLine("Aperte qualquer tecla para finalizar!");
+            Console.ReadKey();
         }
     }
 }

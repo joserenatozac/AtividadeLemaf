@@ -10,5 +10,6 @@ namespace AtividadeLemafJoseRenato.Util.Log
     {
         public static string LerEntrada = "Lendo Entrada";
         public static string SelecionarSala = "Selecionar Sala";
+        public static string SugerirSala = "Sugerir Sala";
     }
 }

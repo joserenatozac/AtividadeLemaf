@@ -9,7 +9,6 @@ namespace AtividadeLemafJoseRenato.Fronteiras.Repositorios
 {
     public interface ISalaRepositorio
     {
-        SalaEntidade Obter(int idSala);
         List<SalaEntidade> ListarTodas();
     }
 }

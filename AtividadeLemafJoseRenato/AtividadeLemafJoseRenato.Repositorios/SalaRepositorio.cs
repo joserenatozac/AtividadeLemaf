@@ -43,11 +43,6 @@ namespace AtividadeLemafJoseRenato.Repositorios
             return listaSalas;
         }
 
-        public SalaEntidade Obter(int idSala)
-        {
-            throw new NotImplementedException();
-        }
-
         private SalaEntidadeBd ObterSalaEntidadeAPartirReader(SQLiteDataReader reader)
         {
             return new SalaEntidadeBd()

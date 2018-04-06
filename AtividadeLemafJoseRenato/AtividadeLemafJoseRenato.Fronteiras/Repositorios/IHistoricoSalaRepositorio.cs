@@ -9,7 +9,7 @@ namespace AtividadeLemafJoseRenato.Fronteiras.Repositorios
 {
     public interface IHistoricoSalaRepositorio
     {
-        HistoricoSalaEntidade Obter(int idSala, DateTime dataInicio, DateTime dataFim);
+        List<HistoricoSalaEntidade> ListarAgendamentosFuturos(int idSala, DateTime dataInicio);
         List<HistoricoSalaEntidade> ListarSalasOcupadas(DateTime dataInicioReuniaoAgendar, DateTime dataFimReuniaoAgendar);
         void Inserir(int idSala, DateTime dataInicio, DateTime dataFim);
     }

@@ -8,11 +8,11 @@ using Fronteira.Dtos;
 
 namespace AtividadeLemafJoseRenato.Fronteiras.Executor.Reuniao
 {
-    public class SelecionarSalaRequisicao : RequisicaoBase
+    public class SelecionarOuSugerirSalaRequisicao : RequisicaoBase
     {
         public AgendamentoDto InformacoesAgendamentoSala { get; set; }
 
-        public SelecionarSalaRequisicao(LogContexto contexto) : base(contexto)
+        public SelecionarOuSugerirSalaRequisicao(LogContexto contexto) : base(contexto)
         {
         }
     }

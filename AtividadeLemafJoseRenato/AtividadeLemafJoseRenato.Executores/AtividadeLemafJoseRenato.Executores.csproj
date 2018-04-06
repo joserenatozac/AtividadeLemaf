@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reuniao\LerEntradaExecutor.cs" />
-    <Compile Include="Reuniao\SelecionarSalaExecutor.cs" />
+    <Compile Include="Reuniao\SelecionarOuSugerirSalaExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtividadeLemafJoseRenato.Entidades\AtividadeLemafJoseRenato.Entidades.csproj">

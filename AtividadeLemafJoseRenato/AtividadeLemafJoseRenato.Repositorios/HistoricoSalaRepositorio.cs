@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AtividadeLemafJoseRenato.Entidades;
 using AtividadeLemafJoseRenato.Repositorios.EntidadesBd;
 using System.Data.SQLite;
+using System.Data;
 
 namespace AtividadeLemafJoseRenato.Repositorios
 {
@@ -26,6 +27,8 @@ namespace AtividadeLemafJoseRenato.Repositorios
         private static string SQL_INSERT_SALA_HIST = $@"INSERT INTO `sala_hist` ({COLUNAS_SALA_HIST}) VALUES ";
 
         private static string SQL_INSERT_VALUES = " ({0},'{1}','{2}','{3}')";
+
+        private static string SQL_WHERE_AGENDAMENTOS_FUTUROS = @" WHERE (`id_sala` = @id_sala AND `dt_inicio` >= @dt_inicio";
 
         public List<HistoricoSalaEntidade> ListarSalasOcupadas(DateTime dataInicioReuniaoAgendar, DateTime dataFimReuniaoAgendar)
         {
@@ -52,11 +55,6 @@ namespace AtividadeLemafJoseRenato.Repositorios
             }
         }
 
-        public HistoricoSalaEntidade Obter(int idSala, DateTime dataInicio, DateTime dataFim)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Inserir(int idSala, DateTime dataInicio, DateTime dataFim)
         {
             string query = string.Format(SQL_INSERT_SALA_HIST + SQL_INSERT_VALUES, idSala, dataInicio.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -70,6 +68,33 @@ namespace AtividadeLemafJoseRenato.Repositorios
                     comando.ExecuteNonQuery();
                 }
             }
+        }
+
+        public List<HistoricoSalaEntidade> ListarAgendamentosFuturos(int idSala, DateTime dataInicio)
+        {
+            List<HistoricoSalaEntidade> listaHistoricosSala = new List<HistoricoSalaEntidade>();
+
+            string query = string.Format(SQL_SELECT_SALA_HIST + SQL_WHERE_AGENDAMENTOS_FUTUROS);
+            using (var conexao = new SQLiteConnection(_stringConexao))
+            {
+                conexao.Open();
+                using (var comando = new SQLiteCommand(conexao))
+                {
+                    comando.CommandText = query;
+                    comando.CommandType = CommandType.Text;
+                    comando.Parameters.Add(new SQLiteParameter("@id_sala", DbType.Int32) { Value = idSala });
+                    comando.Parameters.Add(new SQLiteParameter("@dt_inicio", DbType.DateTime) { Value = dataInicio });
+                    using (var reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            HistoricoSalaEntidadeBd sala = ObterHistoricoSalaEntidadeAPartirReader(reader);
+                            listaHistoricosSala.Add(sala);
+                        }
+                    }
+                }
+            }
+            return listaHistoricosSala;
         }
 
         private HistoricoSalaEntidadeBd ObterHistoricoSalaEntidadeAPartirReader(SQLiteDataReader reader)

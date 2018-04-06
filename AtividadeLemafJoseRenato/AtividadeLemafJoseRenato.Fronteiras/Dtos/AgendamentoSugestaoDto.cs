@@ -8,7 +8,8 @@ namespace AtividadeLemafJoseRenato.Fronteiras.Dtos
 {
     public class AgendamentoSugestaoDto
     {
-        public DateTime DataSugerida { get; set; }
+        public DateTime DataInicioSugerida { get; set; }
+        public DateTime DataFimSugerida { get; set; }
         public int IdSalaSugerida { get; set; }
     }
 }
