@@ -1,5 +1,6 @@
 ﻿using AtividadeLemafJoseRenato.Executores.Reuniao;
 using AtividadeLemafJoseRenato.Fronteiras.Executor.Reuniao;
+using AtividadeLemafJoseRenato.Repositorios;
 using AtividadeLemafJoseRenato.Util;
 using AtividadeLemafJoseRenato.Util.Log;
 using Fronteira.Dtos;
@@ -161,7 +162,7 @@ namespace AtividadeLemafJoseRenato.Tests.Reuniao
         }
 
         [TestMethod]
-        public void ReuniaoAgendamentoValido()
+        public void ReuniaoAgendamentoValidoTeste()
         {
             int[] salasEsperadas = { 1, 2, 6 };
             int contador = 0;
@@ -211,6 +212,48 @@ namespace AtividadeLemafJoseRenato.Tests.Reuniao
                 contador++;
             }
             Assert.IsTrue(deuCerto);
+        }
+
+        [TestMethod]
+        public void SugerirSalaEDataTeste()
+        {
+            bool deuCerto = true;
+            List<AgendamentoDto> ListaInformacoesAgendamentoReuniao = new List<AgendamentoDto>();
+            DateTime proximoDiaUtil = ObterProximoDiaUtil();
+            ListaInformacoesAgendamentoReuniao.Add(
+                new AgendamentoDto()
+                {
+                    DataInicio = proximoDiaUtil,
+                    DataFim = proximoDiaUtil.AddHours(3),
+                    NecessitaAcessoInternet = true,
+                    NecessitaTvEWebcam = true,
+                    QuantidadePessoas = 10
+                });
+
+            LotarSalasDisponiveis(ListaInformacoesAgendamentoReuniao.FirstOrDefault());
+
+            var selecionarExecutor = new SelecionarOuSugerirSalaExecutor();
+
+            foreach (AgendamentoDto agendamentoDto in ListaInformacoesAgendamentoReuniao)
+            {
+                SelecionarOuSugerirSalaRequisicao requisicaoSolicitarSala = new SelecionarOuSugerirSalaRequisicao(new LogContexto(TipoFluxoLog.SelecionarSala, null))
+                {
+                    InformacoesAgendamentoSala = agendamentoDto
+                };
+                SelecionarOuSugerirSalaResultado resultadoSolicitarSala = selecionarExecutor.Executar(requisicaoSolicitarSala);
+                deuCerto = deuCerto && !resultadoSolicitarSala.IdSalaAgendada.HasValue
+                    && resultadoSolicitarSala.ListaSugestoesAgendamentos[0].DataInicioSugerida == proximoDiaUtil.AddHours(3).AddMinutes(1)
+                    && resultadoSolicitarSala.ListaSugestoesAgendamentos[1].DataInicioSugerida == proximoDiaUtil.AddHours(3).AddMinutes(1)
+                    && resultadoSolicitarSala.ListaSugestoesAgendamentos[1].DataInicioSugerida == proximoDiaUtil.AddHours(3).AddMinutes(1);
+            }
+            Assert.IsTrue(deuCerto);
+        }
+
+        private void LotarSalasDisponiveis(AgendamentoDto agendamentoDto)
+        {
+            int contador;
+            for (contador = 1; contador <= 12; contador++)
+                new HistoricoSalaRepositorio().Inserir(contador, agendamentoDto.DataInicio, agendamentoDto.DataFim);
         }
 
         private DateTime ObterProximoDiaUtil()

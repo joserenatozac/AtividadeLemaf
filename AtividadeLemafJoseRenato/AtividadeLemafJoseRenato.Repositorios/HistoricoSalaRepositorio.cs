@@ -26,7 +26,7 @@ namespace AtividadeLemafJoseRenato.Repositorios
 
         private static string SQL_INSERT_SALA_HIST = $@"INSERT INTO `sala_hist` ({COLUNAS_SALA_HIST}) VALUES (@id_sala, @dt_inicio, @dt_fim, @dt_agendamento)";
 
-        private static string SQL_WHERE_AGENDAMENTOS_FUTUROS = @" WHERE (`id_sala` = @id_sala AND `dt_inicio` >= @dt_inicio";
+        private static string SQL_WHERE_AGENDAMENTOS_FUTUROS = @" WHERE `id_sala` = @id_sala AND `dt_inicio` >= @dt_inicio";
 
         public List<HistoricoSalaEntidade> ListarSalasOcupadas(DateTime dataInicioReuniaoAgendar, DateTime dataFimReuniaoAgendar)
         {
