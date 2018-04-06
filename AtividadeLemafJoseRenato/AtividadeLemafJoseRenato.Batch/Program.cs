@@ -11,27 +11,27 @@ namespace AtividadeLemafJoseRenato.Batch
     {
         static void Main(string[] args)
         {
-            Console.Write("Inicializando aplicação...");
-            Console.Write("Inicializando banco de dados...");
+            Console.WriteLine("Inicializando aplicação...");
+            Console.WriteLine("Inicializando banco de dados...");
             InicializadorBanco.InicializaBanco();
-            Console.Write("Lendo entradas");
+            Console.WriteLine("Lendo entradas");
 
             LerEntradaRequisicao requisicaoEntrada = new LerEntradaRequisicao(new LogContexto(TipoFluxoLog.LerEntrada, null));
             LerEntradaResultado resultadoEntrada = new LerEntradaExecutor().Executar(requisicaoEntrada);
 
-            Console.Write($"Número de entradas é {resultadoEntrada.ListaInformacoesAgendamentoReuniao.Count}");
+            Console.WriteLine($"Número de entradas é {resultadoEntrada.ListaInformacoesAgendamentoReuniao.Count}");
 
             var selecionarExecutor = new SelecionarSalaExecutor();
 
             foreach(AgendamentoDto agendamentoDto in resultadoEntrada.ListaInformacoesAgendamentoReuniao)
             {
-                Console.Write($"Avaliar entrada {agendamentoDto.EntradaBruta}:");
-                SelecionarSalaRequisicao requisicaoSolicitarSala = new SelecionarSalaRequisicao(new LogContexto(TipoFluxoLog.LerEntrada, null))
+                Console.WriteLine($"Avaliar entrada {agendamentoDto.EntradaBruta}:");
+                SelecionarSalaRequisicao requisicaoSolicitarSala = new SelecionarSalaRequisicao(new LogContexto(TipoFluxoLog.SelecionarSala, null))
                 {
                     InformacoesAgendamentoSala = agendamentoDto
                 };
                 SelecionarSalaResultado resultadoSolicitarSala = selecionarExecutor.Executar(requisicaoSolicitarSala);
-                Console.Write($"Sala agendada: Sala {resultadoSolicitarSala.IdSalaAgendada}");
+                Console.WriteLine($"Sala agendada: Sala {resultadoSolicitarSala.IdSalaAgendada}");
             }
         }
     }

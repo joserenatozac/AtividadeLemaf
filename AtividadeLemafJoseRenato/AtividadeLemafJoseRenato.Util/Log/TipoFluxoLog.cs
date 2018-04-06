@@ -9,5 +9,6 @@ namespace AtividadeLemafJoseRenato.Util.Log
     public static class TipoFluxoLog
     {
         public static string LerEntrada = "Lendo Entrada";
+        public static string SelecionarSala = "Selecionar Sala";
     }
 }
