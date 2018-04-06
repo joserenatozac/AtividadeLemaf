@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Reuniao\LerEntradaTeste.cs" />
+    <Compile Include="Reuniao\SelecionarOuSugerirSalaTeste.cs" />
     <Compile Include="TesteBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -156,13 +156,13 @@ namespace AtividadeLemafJoseRenato.Executores.Reuniao
             if (informacoesAgendamentoSala.DataFim.Subtract(informacoesAgendamentoSala.DataInicio).TotalHours 
                 > ParametrosRegraAgendamento.MaximoHorasDuracaoReuniao)
             {
-                throw new InformacaoException("A data final da reunião é menor que a data inicial.", InformacoesLog);
+                throw new InformacaoException($"A reunião não pode durar mais que {ParametrosRegraAgendamento.MaximoHorasDuracaoReuniao} horas", InformacoesLog);
             }
             if (informacoesAgendamentoSala.DataInicio.Subtract(DateTime.Now).TotalDays <= 0)
             {
                 throw new InformacaoException($"A reunião deve ser agendada para uma data maior que a atual.", InformacoesLog);
             }
-            if (informacoesAgendamentoSala.DataInicio.Subtract(DateTime.Now).Days <= ParametrosRegraAgendamento.MinimoDiaAntecedenciaAgendamento)
+            if (informacoesAgendamentoSala.DataInicio.Date.Subtract(DateTime.Now.Date).Days < ParametrosRegraAgendamento.MinimoDiaAntecedenciaAgendamento)
             {
                 throw new InformacaoException($"A reunião deve ser agendada com no mínimo {ParametrosRegraAgendamento.MinimoDiaAntecedenciaAgendamento} dia de antecedência", InformacoesLog);
             }
