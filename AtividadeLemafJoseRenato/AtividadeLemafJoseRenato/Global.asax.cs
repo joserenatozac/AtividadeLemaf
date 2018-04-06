@@ -14,7 +14,7 @@ namespace AtividadeLemafJoseRenato
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //InicializadorBanco.InicializaBanco();
+            InicializadorBanco.InicializaBanco();
         }
     }
 }
