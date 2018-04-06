@@ -8,5 +8,6 @@ namespace AtividadeLemafJoseRenato.Fronteiras.Executor.Reuniao
 {
     public class SelecionarSalaResultado : ResultadoBase
     {
+        public int IdSalaAgendada { get; set; }
     }
 }

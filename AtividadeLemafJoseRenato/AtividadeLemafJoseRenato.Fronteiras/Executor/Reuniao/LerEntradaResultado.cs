@@ -9,6 +9,6 @@ namespace AtividadeLemafJoseRenato.Fronteiras.Executor.Reuniao
 {
     public class LerEntradaResultado : ResultadoBase
     {
-        public AgendamentoDto InformacoesAgendamentoReuniao { get; set; }
+        public List<AgendamentoDto> ListaInformacoesAgendamentoReuniao { get; set; }
     }
 }
