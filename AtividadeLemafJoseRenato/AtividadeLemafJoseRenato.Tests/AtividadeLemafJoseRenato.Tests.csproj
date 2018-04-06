@@ -51,12 +51,6 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AtividadeLemafJoseRenato\AtividadeLemafJoseRenato.WebUI.csproj">
-      <Project>{A65DB52E-B82D-40C6-AF6A-73935B190DED}</Project>
-      <Name>AtividadeLemafJoseRenato.WebUI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

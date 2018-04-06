@@ -1,28 +1,19 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
-using System.Configuration;
 
-namespace AtividadeLemafJoseRenato.Repositorios
+namespace AtividadeLemafJoseRenato.Util
 {
-    public class RepositorioBase
+    public static class InicializadorBanco
     {
-        protected string _stringConexao;
-
-        public RepositorioBase()
-        {
-            _stringConexao = ConfigurationManager.ConnectionStrings["reuniao"].ConnectionString;
-        }
-        
-        public virtual void Inicializa()
+        public static void InicializaBanco()
         {
             try
             {
-                using (var conexao = new System.Data.SQLite.SQLiteConnection(_stringConexao))
+                using (var conexao = new System.Data.SQLite.SQLiteConnection(ConfigurationManager.ConnectionStrings["reuniao"].ConnectionString))
                 {
                     conexao.Open();
                     using (var comando = new System.Data.SQLite.SQLiteCommand(conexao))
@@ -90,23 +81,6 @@ namespace AtividadeLemafJoseRenato.Repositorios
                         comando.CommandText = @"INSERT INTO `sala` (`id_sala`, `qtd_pessoas`, `idc_acesso_internet`, `idc_webcam_conferencia`, `idc_computador`)
                                                 VALUES (12, 20, 0, 0, 0)";
                         comando.ExecuteNonQuery();
-                    }
-                    using (var comando = new System.Data.SQLite.SQLiteCommand(conexao))
-                    {
-                        comando.CommandText = "SELECT `id_sala`, `dt_inicio`, `dt_fim`, `dt_agendamento` FROM `sala_hist`";
-
-                        Console.WriteLine("DataReader:");
-                        using (var reader = comando.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("id_sala: {0}", reader["id_sala"]);
-                                Console.WriteLine("dt_inicio: {0}", reader["dt_inicio"]);
-                                Console.WriteLine("dt_fim: {0}", reader["dt_fim"]);
-                                Console.WriteLine("dt_agendamento: {0}", reader["dt_agendamento"]);
-                                Convert.ToDateTime(reader["dt_inicio"]);
-                            }
-                        }
                     }
                 }
             }

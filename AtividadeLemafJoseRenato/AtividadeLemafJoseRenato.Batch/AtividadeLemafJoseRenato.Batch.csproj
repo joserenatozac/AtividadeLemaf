@@ -65,6 +65,10 @@
       <Project>{4C9B2F97-F73A-4D17-B2A2-9A9C991547D3}</Project>
       <Name>AtividadeLemafJoseRenato.Fronteiras</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Repositorios\AtividadeLemafJoseRenato.Repositorios.csproj">
+      <Project>{07F62497-A02D-4831-81A2-0A55347FBDCB}</Project>
+      <Name>AtividadeLemafJoseRenato.Repositorios</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AtividadeLemafJoseRenato.Util\AtividadeLemafJoseRenato.Util.csproj">
       <Project>{8AD544F8-F1F7-409A-A0F7-97DF91B45067}</Project>
       <Name>AtividadeLemafJoseRenato.Util</Name>
