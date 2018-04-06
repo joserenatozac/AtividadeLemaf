@@ -13,5 +13,6 @@ namespace Fronteira.Dtos
         public int QuantidadePessoas { get; set; }
         public bool NecessitaAcessoInternet { get; set; }
         public bool NecessitaTvEWebcam { get; set; }
+        public string EntradaBruta { get; set; }
     }
 }

@@ -1,14 +1,15 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AtividadeLemafJoseRenato.Util;
 
 namespace AtividadeLemafJoseRenato.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class TesteBase
     {
-        [TestMethod]
-        public void TestMethod1()
+        public TesteBase()
         {
+            InicializadorBanco.InicializaBanco();
         }
     }
 }

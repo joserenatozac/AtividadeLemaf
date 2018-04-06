@@ -41,7 +41,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\AgendamentoDto.cs" />
+    <Compile Include="Dtos\AgendamentoSugestaoDto.cs" />
+    <Compile Include="Executor\ExecutorBase.cs" />
+    <Compile Include="Executor\Geral\EnviarEmailRequisicao.cs" />
+    <Compile Include="Executor\Geral\EnviarEmailResultado.cs" />
+    <Compile Include="Executor\IExecutor.cs" />
+    <Compile Include="Executor\RequisicaoBase.cs" />
+    <Compile Include="Executor\ResultadoBase.cs" />
+    <Compile Include="Executor\Reuniao\LerEntradaRequisicao.cs" />
+    <Compile Include="Executor\Reuniao\LerEntradaResultado.cs" />
+    <Compile Include="Executor\Reuniao\SelecionarOuSugerirSalaRequisicao.cs" />
+    <Compile Include="Executor\Reuniao\SelecionarOuSugerirSalaResultado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\IEnviarEmailRepositorio.cs" />
+    <Compile Include="Repositorios\IHistoricoSalaRepositorio.cs" />
+    <Compile Include="Repositorios\ISalaRepositorio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Entidades\AtividadeLemafJoseRenato.Entidades.csproj">
+      <Project>{5B200676-FF28-4114-A3FC-673D36A94B7D}</Project>
+      <Name>AtividadeLemafJoseRenato.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Util\AtividadeLemafJoseRenato.Util.csproj">
+      <Project>{8AD544F8-F1F7-409A-A0F7-97DF91B45067}</Project>
+      <Name>AtividadeLemafJoseRenato.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

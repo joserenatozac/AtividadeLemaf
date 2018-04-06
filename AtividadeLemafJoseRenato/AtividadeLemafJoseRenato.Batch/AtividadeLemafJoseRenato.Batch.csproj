@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,7 +43,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <None Include="App.config" />
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
@@ -54,6 +55,20 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Executores\AtividadeLemafJoseRenato.Executores.csproj">
+      <Project>{0274F331-85C8-40A5-BB6D-7719DD028586}</Project>
+      <Name>AtividadeLemafJoseRenato.Executores</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Fronteiras\AtividadeLemafJoseRenato.Fronteiras.csproj">
+      <Project>{4C9B2F97-F73A-4D17-B2A2-9A9C991547D3}</Project>
+      <Name>AtividadeLemafJoseRenato.Fronteiras</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtividadeLemafJoseRenato.Util\AtividadeLemafJoseRenato.Util.csproj">
+      <Project>{8AD544F8-F1F7-409A-A0F7-97DF91B45067}</Project>
+      <Name>AtividadeLemafJoseRenato.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
