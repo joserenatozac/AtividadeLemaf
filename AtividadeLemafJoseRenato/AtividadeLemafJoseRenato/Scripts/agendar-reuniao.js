@@ -49,11 +49,11 @@ function aoClicarAgendar() {
         type: "GET",
         url: urlAgendarReuniao,
         data: {
-            'dataInicio' : '2018-01-01T01:00:00',
-            'dataFim' : '2018-01-01T01:00:00',
-            'quantidadePessoas' : 10,
-            'precisaInternet' : true,
-            'precisaWebcam' : false
+            'dataInicio': $('#data-inicio').val(),
+            'dataFim': $('#data-fim').val(),
+            'quantidadePessoas': $('#quantidade-pessoas').val(),
+            'precisaInternet': $('#ddl-internet').val(),
+            'precisaWebcam': $('#ddl-webcam').val()
         },
         dataType: 'json',
         traditional: true,
@@ -62,14 +62,14 @@ function aoClicarAgendar() {
         },
         success: function (retorno) {
             if (retorno.sucesso) {
-                alert('Agendamento feito com sucesso!');
+                alert('Agendamento feito com sucesso! sala:' + retorno.sala);
             }
             else {
-                alert(retorno.mensagemErro);
+                alert(retorno.mensagem);
             }
         },
         error: function (retorno) {
-            alert(retorno.mensagemErro);
+            alert(retorno.mensagem);
         }
     });
 }

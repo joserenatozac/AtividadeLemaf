@@ -68,9 +68,6 @@ namespace AtividadeLemafJoseRenato.Controllers
                     Destinatario = ConfigurationManager.AppSettings["EMAIL_TESTE"],
                 };
                 new EnviarEmailExecutor().Executar(requisicaoEnviarEmail);
-                Console.WriteLine("Ocorreu um erro, favor contator o administrador do sistema!");
-                Console.WriteLine("Aperte qualquer tecla para finalizar!");
-                Console.ReadKey();
             }
             return Json(new { sucesso = false, mensagem = "Ocorreu um erro!" }, JsonRequestBehavior.AllowGet);
         }
