@@ -21,9 +21,9 @@ namespace AtividadeLemafJoseRenato.Repositorios
 
         private static string SQL_SELECT_SALA_HIST = $@"SELECT {COLUNAS_SALA_HIST} FROM `sala_hist` ";
 
-        private static string SQL_WHERE_SALAS_OCUPADAS = @" WHERE (`dt_inicio` < '{0}' AND `dt_fim` > '{0}') AND (`dt_inicio` < '{1}' AND `dt_fim` > '{1}')";
+        private static string SQL_WHERE_SALAS_OCUPADAS = @" WHERE (`dt_inicio` <= '{0}' AND `dt_fim` >= '{0}') OR (`dt_inicio` < '{1}' AND `dt_fim` > '{1}')";
 
-        private static string SQL_INSERT_SALA_HIST = $@"INSERT INTO `sala_hist` ({COLUNAS_SALA_HIST}) ";
+        private static string SQL_INSERT_SALA_HIST = $@"INSERT INTO `sala_hist` ({COLUNAS_SALA_HIST}) VALUES ";
 
         private static string SQL_INSERT_VALUES = " ({0},'{1}','{2}','{3}')";
 
@@ -36,7 +36,7 @@ namespace AtividadeLemafJoseRenato.Repositorios
             using (var conexao = new System.Data.SQLite.SQLiteConnection(_stringConexao))
             {
                 conexao.Open();
-                using (var comando = new SQLiteCommand(_stringConexao))
+                using (var comando = new SQLiteCommand(conexao))
                 {
                     comando.CommandText = query;
                     using (var reader = comando.ExecuteReader())
@@ -61,10 +61,10 @@ namespace AtividadeLemafJoseRenato.Repositorios
         {
             string query = string.Format(SQL_INSERT_SALA_HIST + SQL_INSERT_VALUES, idSala, dataInicio.ToString("yyyy-MM-dd HH:mm:ss"),
                 dataFim.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            using (var conexao = new System.Data.SQLite.SQLiteConnection(_stringConexao))
+            using (var conexao = new SQLiteConnection(_stringConexao))
             {
                 conexao.Open();
-                using (var comando = new SQLiteCommand(_stringConexao))
+                using (var comando = new SQLiteCommand(conexao))
                 {
                     comando.CommandText = query;
                     comando.ExecuteNonQuery();
