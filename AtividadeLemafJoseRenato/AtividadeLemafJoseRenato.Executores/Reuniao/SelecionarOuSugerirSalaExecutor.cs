@@ -72,14 +72,14 @@ namespace AtividadeLemafJoseRenato.Executores.Reuniao
                     return new AgendamentoSugestaoDto()
                     {
                         IdSalaSugerida = historicosDeReunioesVetor[0].IdSala,
-                        DataInicioSugerida = historicosDeReunioesVetor[0].DataFim,
+                        DataInicioSugerida = historicosDeReunioesVetor[0].DataFim.AddMinutes(1),
                         DataFimSugerida = historicosDeReunioesVetor[0].DataFim.AddHours(intervaloReuniao)
                     };
             }
             return new AgendamentoSugestaoDto()
             {
                 IdSalaSugerida = historicosDeReunioesVetor[historicosDeReunioes.Count - 1].IdSala,
-                DataInicioSugerida = historicosDeReunioesVetor[historicosDeReunioes.Count - 1].DataFim,
+                DataInicioSugerida = historicosDeReunioesVetor[historicosDeReunioes.Count - 1].DataFim.AddMinutes(1),
                 DataFimSugerida = historicosDeReunioesVetor[historicosDeReunioes.Count - 1].DataFim.AddHours(intervaloReuniao)
             };
 
