@@ -9,6 +9,8 @@ namespace AtividadeLemafJoseRenato.Fronteiras.Executor.Reuniao
 {
     public class LerEntradaRequisicao : RequisicaoBase
     {
+        public string CaminhoArquivoEntrada { get; set; }
+
         public LerEntradaRequisicao(LogContexto contexto) : base(contexto)
         {
         }

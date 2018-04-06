@@ -20,7 +20,7 @@ namespace AtividadeLemafJoseRenato.Executores.Reuniao
         {
             InformacoesLog = requisicao.InformacoesLog;
 
-            string[] linhasEntrada = File.ReadAllLines("Entrada.txt");
+            string[] linhasEntrada = File.ReadAllLines(requisicao.CaminhoArquivoEntrada);
             ValidarLinhas(linhasEntrada);
             List<AgendamentoDto> listaAgendamentoDto = linhasEntrada.Select(linha => ObterAgendamentoAPartirEntrada(linha)).ToList();
             return new LerEntradaResultado()

@@ -19,7 +19,10 @@ namespace AtividadeLemafJoseRenato.Batch
             Console.WriteLine("Lendo entradas");
             try
             {
-                LerEntradaRequisicao requisicaoEntrada = new LerEntradaRequisicao(new LogContexto(TipoFluxoLog.LerEntrada, null));
+                LerEntradaRequisicao requisicaoEntrada = new LerEntradaRequisicao(new LogContexto(TipoFluxoLog.LerEntrada, null))
+                {
+                    CaminhoArquivoEntrada = "Entrada.txt"
+                };
                 LerEntradaResultado resultadoEntrada = new LerEntradaExecutor().Executar(requisicaoEntrada);
 
                 Console.WriteLine($"Número de entradas é {resultadoEntrada.ListaInformacoesAgendamentoReuniao.Count}");
