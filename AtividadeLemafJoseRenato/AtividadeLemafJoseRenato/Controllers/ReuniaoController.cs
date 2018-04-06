@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtividadeLemafJoseRenato.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,12 @@ namespace AtividadeLemafJoseRenato.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public JsonResult AgendarReuniao(DateTime dataInicio, DateTime dataFim, int quantidadePessoas,
+            bool precisaInternet, bool precisaWebcam)
+        {
+
+            return Json(new { sucesso = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,0 +1,53 @@
+﻿
+<div class="container-fluid">
+    <div class="row-fluid">
+        <h3 class="page-header">Agendamento de Reuniões</h3>
+        <div class="well well-sm" style="padding-left:40px;">
+            <div class="form-group row">
+                <label for="data-inicio" class="col-2 col-form-label">Início da Reunião</label>
+                <div class="col-10">
+                    <input class="form-control" type="datetime-local" value="" id="data-inicio">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="data-fim" class="col-2 col-form-label">Término da reunião</label>
+                <div class="col-10">
+                    <input class="form-control" type="datetime-local" value="" id="data-fim">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="quantidade-pessoas" class="col-2 col-form-label">Quantidade de Pessoas</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" value="" id="quantidade-pessoas">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ddl-internet" class="col-2 col-form-label">Precisa de Internet</label>
+                <div class="col-10">
+                    <select class="form-control" id="ddl-internet">
+                        <option>Não</option>
+                        <option>Sim</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ddl-webcam" class="col-2 col-form-label">Precisa de Internet</label>
+                <div class="col-10">
+                    <select class="form-control" id="ddl-webcam">
+                        <option>Não</option>
+                        <option>Sim</option>
+                    </select>
+                </div>
+            </div>
+            <div class="span3" style="text-align:right">
+                <br />
+                <button id="btn-agendar" type="button" class="btn btn-primary btn-lg">&nbsp;Agendar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/agendar-reuniao.js"></script>
+<script type="text/javascript">
+    var urlAgendarReuniao = '@Url.Action("AgendarReuniao", "Reuniao")';
+    $('#quantidade-pessoas').val('5')
+</script>
