@@ -1,4 +1,5 @@
-﻿using AtividadeLemafJoseRenato.Util;
+﻿using AtividadeLemafJoseRenato.Fronteiras.Repositorios;
+using AtividadeLemafJoseRenato.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AtividadeLemafJoseRenato.Repositorios
 {
-    public class EnviarEmailRepositorio
+    public class EnviarEmailRepositorio : IEnviarEmailRepositorio
     {
         public bool EnviarEmail(string remetente, string destinatario, string assunto, string corpoEmail)
         {
