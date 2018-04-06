@@ -24,16 +24,19 @@ namespace AtividadeLemafJoseRenato.Repositorios
         public List<SalaEntidade> ListarTodas()
         {
             List<SalaEntidade> listaSalas = new List<SalaEntidade>();
-
-            using (var comando = new SQLiteCommand(_stringConexao))
+            using (var conexao = new SQLiteConnection(_stringConexao))
             {
-                comando.CommandText = SQL_SELECT_SALA;
-                using (var reader = comando.ExecuteReader())
+                conexao.Open();
+                using (var comando = new SQLiteCommand(conexao))
                 {
-                    while (reader.Read())
+                    comando.CommandText = SQL_SELECT_SALA;
+                    using (var reader = comando.ExecuteReader())
                     {
-                        SalaEntidadeBd sala = ObterSalaEntidadeAPartirReader(reader);
-                        listaSalas.Add(sala);
+                        while (reader.Read())
+                        {
+                            SalaEntidadeBd sala = ObterSalaEntidadeAPartirReader(reader);
+                            listaSalas.Add(sala);
+                        }
                     }
                 }
             }

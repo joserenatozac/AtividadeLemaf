@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Fronteira.Dtos;
 using AtividadeLemafJoseRenato.Util.Log;
 using AtividadeLemafJoseRenato.Util;
+using AtividadeLemafJoseRenato.Entidades;
+using AtividadeLemafJoseRenato.Repositorios;
 
 namespace AtividadeLemafJoseRenato.Executores.Reuniao
 {
@@ -17,6 +19,7 @@ namespace AtividadeLemafJoseRenato.Executores.Reuniao
         {
             InformacoesLog = requisicao.InformacoesLog;
             ValidarInformacoesAgendamento(requisicao.InformacoesAgendamentoSala);
+            List<SalaEntidade> listaSalas = new SalaRepositorio().ListarTodas();
             return null;
         }
 
@@ -32,7 +35,11 @@ namespace AtividadeLemafJoseRenato.Executores.Reuniao
             {
                 throw new InformacaoException("A data final da reunião é menor que a data inicial.", InformacoesLog);
             }
-            if(informacoesAgendamentoSala.DataInicio.Subtract(DateTime.Now).Days >= ParametrosRegraAgendamento.MinimoDiaAntecedenciaAgendamento)
+            if (informacoesAgendamentoSala.DataInicio.Subtract(DateTime.Now).TotalDays <= 0)
+            {
+                throw new InformacaoException($"A reunião deve ser agendada para uma data maior que a atual.", InformacoesLog);
+            }
+            if (informacoesAgendamentoSala.DataInicio.Subtract(DateTime.Now).Days >= ParametrosRegraAgendamento.MinimoDiaAntecedenciaAgendamento)
             {
                 throw new InformacaoException($"A reunião deve ser agendada com no mínimo {ParametrosRegraAgendamento.MinimoDiaAntecedenciaAgendamento} dia de antecedência", InformacoesLog);
             }
