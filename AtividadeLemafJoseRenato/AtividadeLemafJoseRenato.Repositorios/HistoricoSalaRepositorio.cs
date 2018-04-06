@@ -24,9 +24,7 @@ namespace AtividadeLemafJoseRenato.Repositorios
 
         private static string SQL_WHERE_SALAS_OCUPADAS = @" WHERE (`dt_inicio` <= '{0}' AND `dt_fim` >= '{0}') OR (`dt_inicio` < '{1}' AND `dt_fim` > '{1}')";
 
-        private static string SQL_INSERT_SALA_HIST = $@"INSERT INTO `sala_hist` ({COLUNAS_SALA_HIST}) VALUES ";
-
-        private static string SQL_INSERT_VALUES = " ({0},'{1}','{2}','{3}')";
+        private static string SQL_INSERT_SALA_HIST = $@"INSERT INTO `sala_hist` ({COLUNAS_SALA_HIST}) VALUES (@id_sala, @dt_inicio, @dt_fim, @dt_agendamento)";
 
         private static string SQL_WHERE_AGENDAMENTOS_FUTUROS = @" WHERE (`id_sala` = @id_sala AND `dt_inicio` >= @dt_inicio";
 
@@ -57,14 +55,17 @@ namespace AtividadeLemafJoseRenato.Repositorios
 
         public void Inserir(int idSala, DateTime dataInicio, DateTime dataFim)
         {
-            string query = string.Format(SQL_INSERT_SALA_HIST + SQL_INSERT_VALUES, idSala, dataInicio.ToString("yyyy-MM-dd HH:mm:ss"),
-                dataFim.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             using (var conexao = new SQLiteConnection(_stringConexao))
             {
                 conexao.Open();
                 using (var comando = new SQLiteCommand(conexao))
                 {
-                    comando.CommandText = query;
+                    comando.CommandText = SQL_INSERT_SALA_HIST;
+                    comando.CommandType = CommandType.Text;
+                    comando.Parameters.Add(new SQLiteParameter("@id_sala", DbType.Int32) { Value = idSala });
+                    comando.Parameters.Add(new SQLiteParameter("@dt_inicio", DbType.DateTime) { Value = dataInicio });
+                    comando.Parameters.Add(new SQLiteParameter("@dt_fim", DbType.DateTime) { Value = dataFim });
+                    comando.Parameters.Add(new SQLiteParameter("@dt_agendamento", DbType.DateTime) { Value = DateTime.Now });
                     comando.ExecuteNonQuery();
                 }
             }
